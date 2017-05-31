@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	cout<<"read data OK!"<<endl;
 
 	// 开始进行地理处理
-	Processing *processing = new Processing(envDataset);
+	//Processing *processing = new Processing(envDataset);
 
 	for (int i = 0; i < 10; i++)
 	{
