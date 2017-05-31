@@ -200,9 +200,22 @@ void Utility::WriteCSV2(string filename, vector<EnvUnit *> envUnit, vector<int> 
 
 EnvUnit* Utility::GetOneRandomEnvUnit( vector<EnvUnit *> envUnits )
 {
-	int maxnum = envUnits.size();
+	vector<int> indexList;
+	int count = envUnits.size();
+	for (int i = 0; i < count; ++i)
+	{
+		if (envUnits[i]->IsCal)
+		{
+			indexList.push_back(i);
+		}
+	}
+
+	int maxnum = indexList.size();
 	srand( (unsigned)time( NULL ) );		// srand() 函数产生一个以当前时间开始的随机种子
-	int index = rand() % maxnum;			// MAX为最大值，其随机域为0~MAX-1
+	int ii = rand() % maxnum;				// MAX为最大值，其随机域为 0 ~ MAX-1
+	int index = indexList[ii];
+
+	cout<<index;
 
 	return envUnits[index];
 }

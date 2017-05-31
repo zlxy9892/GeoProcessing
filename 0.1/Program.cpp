@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 	for (int i = 0; i < 10; i++)
 	{
-		cout<<Utility::GetOneRandomEnvUnit(envDataset->EnvUnits)->EnvValues[0];
+		cout<<Utility::GetOneRandomEnvUnit(envDataset->EnvUnits)->EnvValues[1]<<endl;
 	}
 
 	//system("pause");
