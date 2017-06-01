@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	// 初始化环境因子数据
 	GDALAllRegister();
-	string dataDir = "E:/data/heshan/";
+	string dataDir = "D:/data/heshan/";
 	EnvDataset *envDataset = new EnvDataset();
 	envDataset->Layers.push_back(new EnvLayer(0, "slope", dataDir + "slp.tif", DataTypeEnum::SINGLEVALUE));
 	envDataset->Layers.push_back(new EnvLayer(1, "planc", dataDir + "plan.tif", DataTypeEnum::SINGLEVALUE));
@@ -19,18 +19,24 @@ int main(int argc, char *argv[])
 	cout<<"read data OK!"<<endl;
 
 	// 开始进行地理处理
-	//Processing *processing = new Processing(envDataset);
+	Processing *processing = new Processing(envDataset);
 
-	for (int i = 0; i < 10; i++)
+	vector<EnvUnit *> samples;
+	for (int i = 0; i < 23; i++)
 	{
-		cout<<Utility::GetOneRandomEnvUnit(envDataset->EnvUnits)->EnvValues[1]<<endl;
-		//Utility::GetOneRandomEnvUnit(envDataset->EnvUnits);
+		EnvUnit *se = Utility::GetOneRandomEnvUnit(envDataset->EnvUnits);
+		samples.push_back(se);
 	}
+
+	processing->RefreshUncertainty(samples);
+	double unc_sum = processing->CalcUncertainty_Sum();
+
+	cout<<unc_sum<<"\n";
 
 
 	// final handle
-	delete envDataset;
-	envDataset = NULL;
+	delete processing;
+	processing = NULL;
 
 	//system("pause");
 	return 0;

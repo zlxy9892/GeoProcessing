@@ -1,14 +1,14 @@
 #include "Utility.h"
 
-Utility::Utility(void)
+Utility::Utility( void )
 {
 }
 
-Utility::~Utility(void)
+Utility::~Utility( void )
 {
 }
 
-string Utility::ConvertToString(double value)
+string Utility::ConvertToString( double value )
 {
 	ostringstream os;
 	os.unsetf(ios::scientific);
@@ -18,7 +18,7 @@ string Utility::ConvertToString(double value)
 	return "invalid conversion";
 }
 
-void Utility::ParseStr(string str, char c, vector<string>& tokens) {
+void Utility::ParseStr( string str, char c, vector<string>& tokens ) {
 	unsigned int posL = 0;
 	unsigned int posR = 0;
 	while(posR < str.length()-1) {
@@ -29,7 +29,7 @@ void Utility::ParseStr(string str, char c, vector<string>& tokens) {
 	}
 }
 
-vector<EnvUnit *> Utility::ReadCSV(string filename, EnvDataset *envDataset)
+vector<EnvUnit *> Utility::ReadCSV( string filename, EnvDataset *envDataset )
 {
 	vector<EnvUnit*> envUnits;
 	ifstream file(filename); // declare file stream:
@@ -77,7 +77,7 @@ vector<EnvUnit *> Utility::ReadCSV(string filename, EnvDataset *envDataset)
 	return envUnits;
 }
 
-vector<EnvUnit *> Utility::ReadCSV(string filename, EnvDataset *envDataset, string targetVName, string idName)
+vector<EnvUnit *> Utility::ReadCSV( string filename, EnvDataset *envDataset, string targetVName, string idName )
 {
 	vector<EnvUnit*> envUnits;
 	ifstream file(filename); // declare file stream:
@@ -148,7 +148,7 @@ vector<EnvUnit *> Utility::ReadCSV(string filename, EnvDataset *envDataset, stri
 	return envUnits;
 }
 
-void Utility::WriteCSV(string filename, vector<EnvUnit *> envUnit)
+void Utility::WriteCSV( string filename, vector<EnvUnit *> envUnit )
 {
 	if(envUnit.size() <= 0)
 	{
@@ -172,7 +172,7 @@ void Utility::WriteCSV(string filename, vector<EnvUnit *> envUnit)
 	file.close();
 }
 
-void Utility::WriteCSV2(string filename, vector<EnvUnit *> envUnit, vector<int> predictedAreaList)
+void Utility::WriteCSV2( string filename, vector<EnvUnit *> envUnit, vector<int> predictedAreaList )
 {
 	if(envUnit.size() <= 0)
 	{
@@ -212,12 +212,9 @@ EnvUnit* Utility::GetOneRandomEnvUnit( vector<EnvUnit *> envUnits )
 
 	int maxnum = indexList.size();
 
-	boost::random::mt19937 rng;
 	boost::random::uniform_int_distribution<> dist(0, maxnum-1);		// maxnum 为最大值，其随机域为 0 ~ maxnum-1
 	int ii = dist(rng);
 	int index = indexList[ii];
-
-	cout<<index<<"\n";
 
 	return envUnits[index];
 }

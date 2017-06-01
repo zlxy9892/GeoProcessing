@@ -119,3 +119,20 @@ void Processing::RefreshUncertainty( vector<EnvUnit *> samples )
 		}*/
 	}
 }
+
+double Processing::CalcUncertainty_Sum()
+{
+	double unc_sum = 0;
+
+	int count = this->EDS->EnvUnits.size();
+	for (int i = 0; i < count; ++i)
+	{
+		EnvUnit *e = this->EDS->EnvUnits[i];
+		if (e->IsCal)
+		{
+			unc_sum += e->Uncertainty;
+		}
+	}
+
+	return unc_sum;
+}

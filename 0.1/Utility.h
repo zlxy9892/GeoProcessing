@@ -12,6 +12,9 @@
 
 using namespace std;
 
+
+static boost::random::mt19937 rng(time(0));	// Ëæ»úÖÖ×Ó
+
 class Utility
 {
 public:
