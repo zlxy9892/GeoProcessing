@@ -4,8 +4,11 @@ project(GeoProcessing_Project)
 
 find_package(GDAL)
 
-include_directories(${GDAL_INCLUDE_DIRS})
-link_directories(${GDAL_LIBRARY_DIRS})
+set(BOOST_INC_DIR C:/soft/boost/include)
+set(BOOST_LIB_DIR C:/soft/boost/lib)
+
+include_directories(${GDAL_INCLUDE_DIRS} ${BOOST_INC_DIR})
+link_directories(${GDAL_LIBRARY_DIRS} ${BOOST_LIB_DIR})
 add_definitions(${GDAL_DEFINITIONS})
 
 aux_source_directory(. DIR_SRCS)

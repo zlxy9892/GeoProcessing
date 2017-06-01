@@ -8,12 +8,14 @@
 #include <sstream>
 #include "EnvUnit.h"
 #include "EnvDataset.h"
+#include "boost/random.hpp"
 
 using namespace std;
 
 class Utility
 {
 public:
+
 	Utility(void);
 	~Utility(void);
 

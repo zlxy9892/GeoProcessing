@@ -211,11 +211,13 @@ EnvUnit* Utility::GetOneRandomEnvUnit( vector<EnvUnit *> envUnits )
 	}
 
 	int maxnum = indexList.size();
-	srand( (unsigned)time( NULL ) );		// srand() 函数产生一个以当前时间开始的随机种子
-	int ii = rand() % maxnum;				// MAX为最大值，其随机域为 0 ~ MAX-1
+
+	boost::random::mt19937 rng;
+	boost::random::uniform_int_distribution<> dist(0, maxnum-1);		// maxnum 为最大值，其随机域为 0 ~ maxnum-1
+	int ii = dist(rng);
 	int index = indexList[ii];
 
-	cout<<index;
+	cout<<index<<"\n";
 
 	return envUnits[index];
 }
