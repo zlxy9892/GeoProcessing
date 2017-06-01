@@ -10,5 +10,8 @@ add_definitions(${GDAL_DEFINITIONS})
 
 aux_source_directory(. DIR_SRCS)
 
-add_executable(GeoProcessing ${DIR_SRCS})
+file(GLOB_RECURSE CURRENT_HEADERS  *.h *.hpp)
+source_group("Header Files" FILES ${CURRENT_HEADERS})
+
+add_executable(GeoProcessing ${DIR_SRCS} ${CURRENT_HEADERS})
 target_link_libraries (GeoProcessing ${GDAL_LIBRARIES})

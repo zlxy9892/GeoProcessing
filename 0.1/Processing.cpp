@@ -17,7 +17,11 @@ Processing::Processing(EnvDataset *envDataset)
 
 Processing::~Processing(void)
 {
-	if (this->EDS != NULL) { delete this->EDS; }
+	if (this->EDS != NULL)
+	{
+		delete this->EDS;
+		this->EDS = NULL;
+	}
 }
 
 double Processing::CalcSimi_Single(double e1, double e2, double range, DataTypeEnum dataType)
