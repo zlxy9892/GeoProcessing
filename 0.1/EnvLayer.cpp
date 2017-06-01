@@ -23,6 +23,7 @@ EnvLayer::EnvLayer(int layerId, string layerName, string filename, DataTypeEnum 
 		this->EnvData.push_back(pData[i]);
 	}
 	CPLFree(pData);
+	pData = NULL;
 	this->CalcStat();
 }
 
