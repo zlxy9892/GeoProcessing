@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
 		cout<<Utility::GetOneRandomEnvUnit(envDataset->EnvUnits)->EnvValues[1]<<endl;
 	}
 
+	delete envDataset;
+	envDataset = NULL;
+
 	//system("pause");
 	return 0;
 }

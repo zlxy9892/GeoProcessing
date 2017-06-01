@@ -215,7 +215,7 @@ EnvUnit* Utility::GetOneRandomEnvUnit( vector<EnvUnit *> envUnits )
 	int ii = rand() % maxnum;				// MAX为最大值，其随机域为 0 ~ MAX-1
 	int index = indexList[ii];
 
-	cout<<index;
+	cout<<index<<"\n";
 
 	return envUnits[index];
 }
