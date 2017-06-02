@@ -4,7 +4,7 @@
 EnvDataset::EnvDataset(void)
 {
 	this->Setting = new BasicSetting();
-	this->CalArea = 0;
+	this->CalcArea = 0;
 }
 
 EnvDataset::~EnvDataset(void)
@@ -46,14 +46,14 @@ void EnvDataset::RefreshAll()
 
 void EnvDataset::RefreshCalArea()
 {
-	this->CalArea = 0;
+	this->CalcArea = 0;
 	int envUnitCount = this->Setting->Width*this->Setting->Height;
 	for(int i = 0; i < envUnitCount; i++)
 	{
 		EnvUnit *e = this->EnvUnits[i];
 		if(e->IsCal)
 		{
-			this->CalArea++;
+			this->CalcArea++;
 		}
 	}
 }

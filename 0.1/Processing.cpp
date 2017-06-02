@@ -88,7 +88,7 @@ double Processing::CalcUncertainty(vector<EnvUnit *> samples, EnvUnit *e)
 	return 1-simi;
 }
 
-int Processing::CalcCanPredictArea(vector<EnvUnit *> samples, double thred_unc)
+int Processing::CalcCanPredictArea(double thred_unc)
 {
 	int area = 0;
 	int count = this->EDS->EnvUnits.size();
@@ -135,4 +135,21 @@ double Processing::CalcUncertainty_Sum()
 	}
 
 	return unc_sum;
+}
+
+double Processing::ObjectFunction( vector<EnvUnit *> samples )
+{
+	double o = 0;
+
+	double canPreArea = this->CalcCanPredictArea(0.2);
+	double totalArea = this->EDS->CalcArea;
+
+	double unc_sum = this->CalcUncertainty_Sum();
+
+	double o1 = 1.0*canPreArea/totalArea;
+	double o2 = 1.0*unc_sum/totalArea;
+
+	cout<<o1<<"\t"<<o2<<"\n";
+
+	return o;
 }

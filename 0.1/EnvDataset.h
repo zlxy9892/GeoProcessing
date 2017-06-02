@@ -15,7 +15,7 @@ public:
 	vector<EnvLayer *> Layers;
 	vector<EnvUnit *> EnvUnits;
 	BasicSetting *Setting;
-	int CalArea;
+	int CalcArea;
 
 public:
 	EnvDataset(void);
