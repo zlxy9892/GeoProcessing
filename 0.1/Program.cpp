@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	// 初始化环境因子数据
 	GDALAllRegister();
-	string dataDir = "E:/data/heshan/";
+	string dataDir = "../data/heshan/";
 	EnvDataset *envDataset = new EnvDataset();
 	envDataset->Layers.push_back(new EnvLayer(0, "slope", dataDir + "slp.tif", DataTypeEnum::SINGLEVALUE));
 	envDataset->Layers.push_back(new EnvLayer(1, "planc", dataDir + "plan.tif", DataTypeEnum::SINGLEVALUE));
