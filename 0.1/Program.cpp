@@ -1,12 +1,15 @@
 #include <iostream>
 #include "Utility.h"
 #include "Processing.h"
-
+#include "Windows.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+	LARGE_INTEGER freq, start, end;
+	QueryPerformanceFrequency(&freq);
+
 	// 初始化环境因子数据
 	GDALAllRegister();
 	string dataDir = "../data/heshan/";
@@ -22,14 +25,19 @@ int main(int argc, char *argv[])
 	Processing *processing = new Processing(envDataset);
 
 	vector<EnvUnit *> samples;
-	for (int i = 1; i <= 5; i++)
+	for (int i = 1; i <= 1; i++)
 	{
 		EnvUnit *se = Utility::GetOneRandomEnvUnit(envDataset->EnvUnits);
 		samples.push_back(se);
 	}
 
+	QueryPerformanceCounter(&start);
+
 	processing->RefreshUncertainty(samples);
-	processing->ObjectFunction(samples);
+
+	QueryPerformanceCounter(&end);
+	
+	//processing->ObjectFunction(samples);
 
 	//cout<<unc_sum<<"\n";
 
@@ -38,6 +46,8 @@ int main(int argc, char *argv[])
 	delete processing;
 	processing = NULL;
 
+
+	printf("%lf  sec\n", (end.QuadPart - start.QuadPart)*1.0/freq.QuadPart);
 	//system("pause");
 	return 0;
 }

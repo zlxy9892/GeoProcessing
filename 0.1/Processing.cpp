@@ -27,7 +27,7 @@ Processing::~Processing(void)
 double Processing::CalcSimi_Single(double e1, double e2, double range, DataTypeEnum dataType)
 {
 	double simi = -1;
-	if (dataType == BOOLEAN)
+	if (dataType == FACTOR)
 	{
 		if (e1 == e2)
 		{

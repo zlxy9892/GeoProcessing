@@ -16,9 +16,9 @@ void EnvDataset::ReadinLayers(vector<string> envLayerFilenames, vector<string> c
 {
 	for(int i = 0; i < envLayerFilenames.size(); i++)
 	{
-		if(calMethods[i] == "boolean")
+		if(calMethods[i] == "factor")
 		{
-			this->AddLayer(new EnvLayer(i, "Bedrock", envLayerFilenames[i], BOOLEAN));
+			this->AddLayer(new EnvLayer(i, "Bedrock", envLayerFilenames[i], FACTOR));
 		}
 		else if(calMethods[i] == "gower")
 		{

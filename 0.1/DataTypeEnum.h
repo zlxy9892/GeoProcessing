@@ -1,5 +1,5 @@
 #pragma once
 
 enum DataTypeEnum {
-	BOOLEAN, SINGLEVALUE, RANGE, OTHER
+	FACTOR, SINGLEVALUE, RANGE, OTHER
 };
