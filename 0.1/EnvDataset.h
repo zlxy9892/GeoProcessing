@@ -1,5 +1,7 @@
 // 环境数据集
-#pragma once
+#ifndef _ENVDATASET_H
+#define _ENVDATASET_H
+
 
 #include <vector>
 #include "EnvLayer.h"
@@ -32,3 +34,4 @@ public:
 
 };
 
+#endif

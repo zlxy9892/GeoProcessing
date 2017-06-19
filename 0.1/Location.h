@@ -1,4 +1,7 @@
-#pragma once
+#ifndef _LOCATION_H
+#define _LOCATION_H
+
+
 class Location
 {
 public:
@@ -14,3 +17,4 @@ public:
 	Location(int row, int col, double x, double y);
 };
 
+#endif

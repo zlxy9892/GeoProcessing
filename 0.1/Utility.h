@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _UTILITY_H
+#define _UTILITY_H
+
 
 #include <iostream>
 #include <iomanip>
@@ -34,3 +36,4 @@ public:
 	static EnvUnit* GetOneRandomEnvUnit(vector<EnvUnit *> envUnits);		// 获取一个随机的环境单元(栅格)
 };
 
+#endif

@@ -166,6 +166,9 @@ void Processing::RefreshDensity( double thd_simi )
 		if (e_i->IsCal)
 		{
 			e_i->Density = 0;
+
+			int sum = 0;
+			#pragma omp parallel for reduction(+:sum)
 			for (int j = 0; j < count; ++j)
 			{
 				EnvUnit *e_j = this->EDS->EnvUnits[j];
@@ -174,10 +177,13 @@ void Processing::RefreshDensity( double thd_simi )
 					double simi = this->CalcSimi(e_i, e_j);
 					if (simi > thd_simi)
 					{
-						e_i->Density++;
+						//e_i->Density++;
+						sum++;
 					}
 				}
 			}
+
+			e_i->Density = sum;
 		}
 
 		// show process
@@ -189,7 +195,7 @@ void Processing::RefreshDensity( double thd_simi )
 		}
 	}
 	cout<<'\r';
-	cout<<"已完成 100%\n\n";
+	cout<<"已完成  100% ******\n\n";
 }
 
 void Processing::RefreshDSimi()
@@ -226,7 +232,7 @@ void Processing::RefreshDSimi()
 		}
 	}
 	cout<<'\r';
-	cout<<"已完成 100%\n";
+	cout<<"已完成  100% ******\n";
 }
 
 

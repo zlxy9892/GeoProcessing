@@ -1,5 +1,7 @@
 // 环境数据图层
-#pragma once
+#ifndef _ENVLAYER_H
+#define _ENVLAYER_H
+
 
 #include <string>
 #include <vector>
@@ -37,3 +39,4 @@ public:
 	void Writeout(string filename, string type, GDALDataset *srcDs);
 };
 
+#endif

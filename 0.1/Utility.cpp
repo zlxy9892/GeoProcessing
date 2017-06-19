@@ -226,18 +226,23 @@ void Utility::WriteCSV_Temp( string filename, vector<EnvUnit *> envUnits )
 		return;
 	}
 	ofstream file(filename);
-	string firstLine = "Density,DSimi\n";
+	string firstLine = "x,y,Density,DSimi\n";
 	file<<firstLine;
 
 	double cellSize = envUnits[0]->CellSize;
 	for(int i = 0; i < envUnits.size(); i++)
 	{
+		double x = envUnits[i]->Loc->X + cellSize / 2;
+		double y = envUnits[i]->Loc->Y - cellSize / 2;
+		string xstr = Utility::ConvertToString(x);
+		string ystr = Utility::ConvertToString(y);
+
 		double density = envUnits[i]->Density;
 		double dsimi = envUnits[i]->DSimi;
 		string str_density = Utility::ConvertToString(density);
 		string str_dsimi = Utility::ConvertToString(dsimi);
 
-		string line = str_density + "," +str_dsimi + "\n";
+		string line = xstr + "," + ystr + "," + str_density + "," + str_dsimi + "\n";
 		file<<line;
 	}
 	file.flush();

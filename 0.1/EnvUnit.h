@@ -1,6 +1,7 @@
 // 环境单元，包含多个环境因子的信息
+#ifndef _ENVUNIT_H
+#define _ENVUNIT_H
 
-#pragma once
 
 #include <vector>
 #include "DataTypeEnum.h"
@@ -41,3 +42,4 @@ public:
 	void AddEnvValue(double envValue);
 };
 
+#endif

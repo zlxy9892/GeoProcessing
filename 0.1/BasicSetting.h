@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _BASICSETTING_H
+#define _BASICSETTING_H
+
 
 #include <string>
 
@@ -21,3 +23,4 @@ public:
 	~BasicSetting(void);
 };
 
+#endif

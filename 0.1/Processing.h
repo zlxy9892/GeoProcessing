@@ -1,6 +1,7 @@
 // 处理方法
+#ifndef _PROCESSING_H
+#define _PROCESSING_H
 
-#pragma once
 
 #include <vector>
 #include <cmath>
@@ -13,6 +14,8 @@
 #include "Location.h"
 #include "EnvDataset.h"
 #include "Utility.h"
+#include <omp.h>
+
 
 using namespace std;
 
@@ -50,3 +53,4 @@ public:
 
 };
 
+#endif 
