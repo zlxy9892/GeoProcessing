@@ -31,6 +31,9 @@ public:
 	int Number_Support;					// 支持样点数量
 	int Number_Contradict;				// 矛盾样点数量
 
+	int Density;						// 密度（与该点相似度在阈值以上的点的数量）
+	double DSimi;						// 比该点密度更高且与该点最相似的点的相似度
+
 public:
 	EnvUnit(void);
 	~EnvUnit(void);

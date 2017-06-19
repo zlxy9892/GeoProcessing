@@ -24,30 +24,16 @@ int main(int argc, char *argv[])
 	// 开始进行地理处理
 	Processing *processing = new Processing(envDataset);
 
-	vector<EnvUnit *> samples;
-	for (int i = 1; i <= 1; i++)
-	{
-		EnvUnit *se = Utility::GetOneRandomEnvUnit(envDataset->EnvUnits);
-		samples.push_back(se);
-	}
+	processing->RefreshDensity(0.8);
+	processing->RefreshDSimi();
 
-	QueryPerformanceCounter(&start);
-
-	processing->RefreshUncertainty(samples);
-
-	QueryPerformanceCounter(&end);
-	
-	//processing->ObjectFunction(samples);
-
-	//cout<<unc_sum<<"\n";
+	Utility::WriteCSV_Temp("E:/output.csv", envDataset->EnvUnits);
 
 
 	// final handle
 	delete processing;
 	processing = NULL;
 
-
-	printf("%lf  sec\n", (end.QuadPart - start.QuadPart)*1.0/freq.QuadPart);
 	//system("pause");
 	return 0;
 }

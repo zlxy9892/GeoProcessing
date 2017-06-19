@@ -40,5 +40,13 @@ public:
 
 	EnvUnit* GetLargestGapFillingSample(double threshold_uncertainty);					// 扩增可推测面积
 
+	
+	// ---------------------------------------------------------
+
+	void RefreshDensity(double thd_simi);
+	void RefreshDSimi();
+
+	// ---------------------------------------------------------
+
 };
 

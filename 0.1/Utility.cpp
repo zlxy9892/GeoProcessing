@@ -218,3 +218,28 @@ EnvUnit* Utility::GetOneRandomEnvUnit( vector<EnvUnit *> envUnits )
 
 	return envUnits[index];
 }
+
+void Utility::WriteCSV_Temp( string filename, vector<EnvUnit *> envUnits )
+{
+	if(envUnits.size() <= 0)
+	{
+		return;
+	}
+	ofstream file(filename);
+	string firstLine = "Density,DSimi\n";
+	file<<firstLine;
+
+	double cellSize = envUnits[0]->CellSize;
+	for(int i = 0; i < envUnits.size(); i++)
+	{
+		double density = envUnits[i]->Density;
+		double dsimi = envUnits[i]->DSimi;
+		string str_density = Utility::ConvertToString(density);
+		string str_dsimi = Utility::ConvertToString(dsimi);
+
+		string line = str_density + "," +str_dsimi + "\n";
+		file<<line;
+	}
+	file.flush();
+	file.close();
+}

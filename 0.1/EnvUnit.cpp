@@ -14,6 +14,9 @@ EnvUnit::EnvUnit(void)
 	this->PredictCredibility = -1;
 	this->PredictSoilVarible = -1;
 	this->PredictUncertainty = -1;
+	
+	this->Density = 0;
+	this->DSimi = 0;
 }
 
 EnvUnit::~EnvUnit(void)

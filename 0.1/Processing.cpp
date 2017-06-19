@@ -153,3 +153,81 @@ double Processing::ObjectFunction( vector<EnvUnit *> samples )
 
 	return o;
 }
+
+
+// -------------------------------------------------------
+
+void Processing::RefreshDensity( double thd_simi )
+{
+	int count = this->EDS->EnvUnits.size();
+	for (int i = 0; i < count; ++i)
+	{
+		EnvUnit *e_i = this->EDS->EnvUnits[i];
+		if (e_i->IsCal)
+		{
+			e_i->Density = 0;
+			for (int j = 0; j < count; ++j)
+			{
+				EnvUnit *e_j = this->EDS->EnvUnits[j];
+				if (e_j->IsCal)
+				{
+					double simi = this->CalcSimi(e_i, e_j);
+					if (simi > thd_simi)
+					{
+						e_i->Density++;
+					}
+				}
+			}
+		}
+
+		// show process
+		int segementCount = 1000;
+		if(i % (count/segementCount) == 0)
+		{
+			cout<<'\r';
+			cout<<"已完成 "<<setw(5)<<(int((i*1.0/count+0.5/segementCount)*segementCount))/(segementCount/100.0)<<"%";
+		}
+	}
+	cout<<'\r';
+	cout<<"已完成 100%\n\n";
+}
+
+void Processing::RefreshDSimi()
+{
+	int count = this->EDS->EnvUnits.size();
+	for (int i = 0; i < count; ++i)
+	{
+		EnvUnit *e_i = this->EDS->EnvUnits[i];
+		if (e_i->IsCal)
+		{
+			for (int j = 0; j < count; ++j)
+			{
+				EnvUnit *e_j = this->EDS->EnvUnits[j];
+				if (e_j->IsCal)
+				{
+					if (e_j->Density > e_i->Density)
+					{
+						double dsimi_temp = this->CalcSimi(e_i, e_j);
+						if (e_i->DSimi < dsimi_temp)
+						{
+							e_i->DSimi = dsimi_temp;
+						}
+					}
+				}
+			}
+		}
+
+		// show process
+		int segementCount = 1000;
+		if(i % (count/segementCount) == 0)
+		{
+			cout<<'\r';
+			cout<<"已完成 "<<setw(5)<<(int((i*1.0/count+0.5/segementCount)*segementCount))/(segementCount/100.0)<<"%";
+		}
+	}
+	cout<<'\r';
+	cout<<"已完成 100%\n";
+}
+
+
+// -------------------------------------------------------
