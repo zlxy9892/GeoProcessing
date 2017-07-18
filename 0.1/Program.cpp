@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 	// 初始化环境因子数据
 	GDALAllRegister();
 	EnvDataset *envDataset = new EnvDataset();
-	//string dataDir = "../data/heshan/";
-	string dataDir = "../data/raffelson/";
-	LoadData_raffelson(dataDir, envDataset);
+	string dataDir = "../data/heshan/";
+	//string dataDir = "../data/raffelson/";
+	LoadData_heshan(dataDir, envDataset);
 	cout<<"read data OK!"<<endl;
 
 	// 开始进行地理处理
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 	processing->RefreshDensity(0.8);
 	processing->RefreshDSimi();
 
-	Utility::WriteCSV_Temp("E:/output.csv", envDataset->EnvUnits);
+	Utility::WriteCSV_Temp("E:/output_heshan.csv", envDataset->EnvUnits);
 
 
 	// final handle
