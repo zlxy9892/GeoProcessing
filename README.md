@@ -1,2 +1,2 @@
 # GeoProcessing
-code of my master thesis
+code of some basic geographical processing (such as input and output geo data).
